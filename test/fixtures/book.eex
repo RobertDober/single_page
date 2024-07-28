@@ -1,0 +1,3 @@
+<%= for i <- 1..2 do %>
+  <%= h.include("test/fixtures/chapter_#{i}") %>
+<% end %>

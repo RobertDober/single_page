@@ -1,8 +1,6 @@
 defmodule SinglePageTest do
   use ExUnit.Case
-  doctest SinglePage
+  doctest SinglePage, import: true
 
-  test "greets the world" do
-    assert SinglePage.hello() == :world
-  end
 end
+# SPDX-License-Identifier: AGPL-3.0-or-later
