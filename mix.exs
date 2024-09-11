@@ -9,6 +9,7 @@ defmodule SinglePage.MixProject do
       version: @version,
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
+      escript: escript_config(),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "Interpret an EEx template with html and markdown specific helpers",
@@ -36,8 +37,13 @@ defmodule SinglePage.MixProject do
     [
       {:dialyxir, "~> 1.4.3", only: [:dev], runtime: false},
       {:earmark, "~> 1.4.47"},
+      {:ex_aequo, "~> 0.6.7"},
       {:excoveralls, "~> 0.18.1", only: [:test]},
     ]
+  end
+
+  defp escript_config do
+    [main_module: SinglePage.Cli]
   end
 
   defp package do

@@ -24,3 +24,4 @@ single_page-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+.local

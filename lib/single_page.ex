@@ -30,16 +30,25 @@ defmodule SinglePage do
   For more details see the doc of `SinglePage.Helpers`
   """
 
-  @spec bindings() :: Keyword.t()
-  def bindings do
+  @spec bindings(map) :: Keyword.t()
+  def bindings(args) do
     [
+      args: args,
       earmark: Earmark,
       h: Helpers,
     ]
   end
 
   @spec eval_file(binary())::binary()
-  def eval_file(path) do
-    EEx.eval_file(path, bindings())
+  def eval_file(path, args \\ []) do
+    arg_map = _argstomap(args)
+    EEx.eval_file(path, bindings(arg_map))
+  end
+
+  defp _argstomap(args) do
+    args 
+    |> Enum.chunk_every(2) 
+    |> Enum.map(fn [s, v] -> [String.to_atom(s), v] end)
+    |> Enum.into(%{})
   end
 end

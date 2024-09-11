@@ -52,6 +52,10 @@ defmodule SinglePage.Helpers do
     |> Earmark.as_html!
   end
 
+  def style(path) do
+    "<link rel='stylesheet' href='#{path}'>"
+  end
+
   @doc false
   def get_ast!(path) do
     path  
